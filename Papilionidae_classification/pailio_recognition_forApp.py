@@ -3,10 +3,8 @@ import sys
 
 # Image file path
 image_file = sys.argv[1]
-# image_file = 'D:/Robin/test.png'
-graph_file = 'D:/Robin/Coding/Python/Papilionidae_classification/models/papilionidae_graph_4000.pb'
-# label_file = 'D:/Robin/Coding/Python/Papilionidae_classification/models/papilionidae_chinese_labels.txt'
-label_file = 'D:/Robin/Coding/Python/Papilionidae_classification/models/papilionidae_number_labels.txt'
+graph_file = sys.argv[2] + '/Papilionidae_classification/models/papilionidae_graph_4000.pb'
+label_file = sys.argv[2] + '/Papilionidae_classification/models/papilionidae_number_labels.txt'
 
 
 # Read image

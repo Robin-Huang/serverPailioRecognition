@@ -113,7 +113,7 @@ void serverWindow::sendProsResult()
     // ********** Call Python Script --------->>
     QProcess filePros;
     ui->stateBrowser->append(tr("開始辨識..."));
-    filePros.start(prosFilePath + filePath);        // execute
+    filePros.start(prosFilePath + filePath + " " + projPath);        // execute
     filePros.waitForFinished(-1);                   // wait for finish
     ui->stateBrowser->append(tr("辨識完成..."));
 
