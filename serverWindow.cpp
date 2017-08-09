@@ -12,12 +12,13 @@ serverWindow::serverWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    clientConnection = new QTcpSocket(this);
     dirSetting();
 
     // ********** Connect Signal & Slot ------>>
     connect(ui->startBtn, SIGNAL(clicked())      , this, SLOT(startServer()));
     connect(ui->stopBtn , SIGNAL(clicked())      , this, SLOT(stopServer()));
-    connect(&server     , SIGNAL(newConnection()), this, SLOT(acceptConnection()));
+    connect(&server     , SIGNAL(newConnection()), this, SLOT(acceptConnection()), Qt::QueuedConnection);
 }
 
 void serverWindow::dirSetting()
@@ -49,6 +50,7 @@ void serverWindow::stopServer()
 
 void serverWindow::acceptConnection()
 {
+
     curTime  = QDateTime::currentDateTime();
     filePath = savePath + curTime.toString("yyyy-MM-dd_hh-mm-ss") + ".jpg";
     file     = new QFile(filePath);
@@ -188,4 +190,5 @@ serverWindow::~serverWindow()
 {
     delete ui;
     delete file;
+    delete clientConnection;
 }
